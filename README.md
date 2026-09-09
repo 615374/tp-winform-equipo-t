@@ -1,4 +1,4 @@
-# TPWinForm_EquipoX
+# TPWinForm_EquipoT
 
 Proyecto de escritorio desarrollado en **C# (.NET / WinForms)** para la materia **Programación III** de la Universidad Tecnológica Nacional (UTN). 
 

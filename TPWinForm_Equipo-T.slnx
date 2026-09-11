@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Dominio/Dominio.csproj" />
+  <Project Path="Gestion de Catalogo de Productos/Presentacion.csproj" />
+  <Project Path="Negocio/Negocio.csproj" />
+</Solution>

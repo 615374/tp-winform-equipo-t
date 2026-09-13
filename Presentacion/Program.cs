@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Gestion_de_Catalogo_de_Productos
+namespace Presentacion
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace Gestion_de_Catalogo_de_Productos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmPrincipal());
         }
     }
 }

@@ -40,14 +40,17 @@ namespace Negocio
 
                     aux.Precio = (decimal)datos.Lector["Precio"];
 
+                    // Instanciar objetos antes de asignar propiedades
                     if (!(datos.Lector["Marca"] is DBNull))
                     {
+                        aux.Marca = new Marca();
                         aux.Marca.Id = (int)datos.Lector["IdMarca"];
                         aux.Marca.Descripcion = (string)datos.Lector["Marca"];
                     }
 
                     if (!(datos.Lector["Categoria"] is DBNull))
                     {
+                        aux.Categoria = new Categoria();
                         aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
                         aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                     }

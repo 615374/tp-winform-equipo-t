@@ -77,23 +77,21 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                /* Versión acortada del Insert incluyendo el método de setearParametro por cada valor (REVISAR)
+                //Planteamos la consulta SQL con parámetros
                 string consulta = @"Insert into ARTICULOS 
                                 (Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values
                                 (@Id, @Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)";
+
+                datos.setearConsulta(consulta);
+                //Indicamos dentro de la consulta establecida los valores del artículo que queremos agregar
                 datos.setearParametro("@Id", articulo.Id);
                 datos.setearParametro("@Codigo", articulo.Codigo);
                 datos.setearParametro("@Nombre", articulo.Nombre);
                 datos.setearParametro("@Descripcion", articulo.Descripcion);
                 datos.setearParametro("@IdMarca", articulo.Marca.Id);
                 datos.setearParametro("@IdCategoria", articulo.Categoria.Id);
-                datos.setearParametro("@Precio", articulo.Precio);*/
+                datos.setearParametro("@Precio", articulo.Precio);
 
-                string consulta = @"Insert into ARTICULOS 
-                                (Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values 
-                                ("+articulo.Id+","+articulo.Codigo+","+articulo.Nombre+","+articulo.Descripcion+","
-                                +articulo.Marca.Id+","+articulo.Categoria.Id+","+articulo.Precio+")";
-                datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
             }
             catch (Exception ex) 

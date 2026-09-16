@@ -72,5 +72,37 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public void agregar(Articulo articulo) 
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                /* Versión acortada del Insert incluyendo el método de setearParametro por cada valor
+                string consulta = @"Insert into ARTICULOS 
+                                (Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values
+                                (@Id, @Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)";
+                datos.setearParametro("@Id", articulo.Id);
+                datos.setearParametro("@Codigo", articulo.Codigo);
+                datos.setearParametro("@Nombre", articulo.Nombre);
+                datos.setearParametro("@Descripcion", articulo.Descripcion);
+                datos.setearParametro("@IdMarca", articulo.Marca.Id);
+                datos.setearParametro("@IdCategoria", articulo.Categoria.Id);
+                datos.setearParametro("@Precio", articulo.Precio);*/
+
+                string consulta = @"Insert into ARTICULOS 
+                                (Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values 
+                                ("+articulo.Id+","+articulo.Codigo+","+articulo.Nombre+","+articulo.Descripcion+","
+                                +articulo.Marca.Id+","+articulo.Categoria.Id+","+articulo.Precio+")";
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }            
+        }
     }
 }

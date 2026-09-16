@@ -40,4 +40,4 @@ Esta aplicación permite la gestión integral de un catálogo de artículos come
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone [https://github.com/615374/tp-winform-equipo-t.git](https://github.com/615374/tp-winform-equipo-t.git)
+   git clone https://github.com/615374/tp-winform-equipo-t.git

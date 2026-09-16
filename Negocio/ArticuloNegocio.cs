@@ -136,9 +136,28 @@ namespace Negocio
         }
         public void eliminar(int idArticulo)
         {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                //Planteamos la consulta SQL con parámetros
+                string consulta = "Delete From ARTICULOS WHERE Id = @Id";
 
+                datos.setearConsulta(consulta);
+                 //Indicamos dentro de la consulta establecida el Id del artículo que vamos a eliminar
+                datos.setearParametro("@Id", idArticulo);
+
+                datos.ejecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
-        public void eliminarLogico(int idArticulo)
+        public void eliminarLogico(int idArticulo) //Ver como realizamos este, si le agregamos un campo de activo al Artículo o no
         {
 
         }

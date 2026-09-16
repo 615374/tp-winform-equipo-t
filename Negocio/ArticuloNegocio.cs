@@ -110,10 +110,14 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                //Planteamos la consulta SQL con parámetros
                 string consulta = @"Update ARTICULOS set
                                 Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion,
                                 IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @Precio
                                 WHERE Id = @Id";
+
+                datos.setearConsulta(consulta);
+                //Indicamos dentro de la consulta establecida los nuevos valores del artículo que queremos modificar
                 datos.setearParametro("@Id", articulo.Id);
                 datos.setearParametro("@Codigo", articulo.Codigo);
                 datos.setearParametro("@Nombre", articulo.Nombre);
@@ -122,7 +126,6 @@ namespace Negocio
                 datos.setearParametro("@IdCategoria", articulo.Categoria.Id);
                 datos.setearParametro("@Precio", articulo.Precio);
 
-                datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
             }
             catch (Exception ex)
@@ -143,7 +146,7 @@ namespace Negocio
                 string consulta = "Delete From ARTICULOS WHERE Id = @Id";
 
                 datos.setearConsulta(consulta);
-                 //Indicamos dentro de la consulta establecida el Id del artículo que vamos a eliminar
+                //Indicamos dentro de la consulta establecida el Id del artículo que vamos a eliminar
                 datos.setearParametro("@Id", idArticulo);
 
                 datos.ejecutarLectura();

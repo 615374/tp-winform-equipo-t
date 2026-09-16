@@ -77,7 +77,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                /* Versión acortada del Insert incluyendo el método de setearParametro por cada valor
+                /* Versión acortada del Insert incluyendo el método de setearParametro por cada valor (REVISAR)
                 string consulta = @"Insert into ARTICULOS 
                                 (Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values
                                 (@Id, @Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)";
@@ -96,13 +96,51 @@ namespace Negocio
                 datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
             }
-            catch (Exception ex) {
+            catch (Exception ex) 
+            {
                 throw ex;
             }
             finally
             {
                 datos.cerrarConexion();
             }            
+        }
+        public void modificar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = @"Update ARTICULOS set
+                                Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion,
+                                IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @Precio
+                                WHERE Id = @Id";
+                datos.setearParametro("@Id", articulo.Id);
+                datos.setearParametro("@Codigo", articulo.Codigo);
+                datos.setearParametro("@Nombre", articulo.Nombre);
+                datos.setearParametro("@Descripcion", articulo.Descripcion);
+                datos.setearParametro("@IdMarca", articulo.Marca.Id);
+                datos.setearParametro("@IdCategoria", articulo.Categoria.Id);
+                datos.setearParametro("@Precio", articulo.Precio);
+
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void eliminar(int idArticulo)
+        {
+
+        }
+        public void eliminarLogico(int idArticulo)
+        {
+
         }
     }
 }

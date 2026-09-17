@@ -107,6 +107,83 @@ namespace Presentacion
         private void frmPrincipal_Load_1(object sender, EventArgs e)
         {
             cargar();
+
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Codigo");
+            cboCampo.Items.Add("Marca");
+            cboCampo.Items.Add("Categoria");
+            cboCampo.Items.Add("Precio");
+        }
+
+        private void txtFiltroRapido_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtFiltroRapido.Text;
+            if (filtro == "")
+            {
+                dgvArticulos.DataSource = listaArticulo;
+            }
+            else
+            {
+                List<Articulo> listaFiltrada = new List<Articulo>();
+                foreach (Articulo articulo in listaArticulo)
+                {
+                    if (articulo.Nombre.ToUpper().Contains(filtro.ToUpper()))
+                    {
+                        listaFiltrada.Add(articulo);
+                    }
+                }
+                dgvArticulos.DataSource = listaFiltrada;
+            }
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboCriterio.Items.Clear();
+            txtFiltroAvanzado.Clear();
+            cboCriterio.Text = "";
+
+            if (cboCampo.Text != "Precio")
+            {
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
+            else
+            {
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (cboCampo.SelectedItem == null || cboCriterio.SelectedItem == null)
+            {
+                MessageBox.Show("Seleccione un campo y un criterio para realizar la búsqueda.");
+                return;
+            }
+            if (txtFiltroAvanzado.Text == "")
+            {
+                MessageBox.Show("Ingrese un valor para realizar la búsqueda.");
+                return;
+            }
+
+            string campo = cboCampo.SelectedItem.ToString();
+            string criterio = cboCriterio.SelectedItem.ToString();
+            string filtro = txtFiltroAvanzado.Text;
+
+            try
+            { 
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            List<Articulo> listaFiltrada = negocio.filtrar(campo, criterio, filtro);
+
+            dgvArticulos.DataSource = listaFiltrada;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

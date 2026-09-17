@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Dominio;
+using Gestion_de_Catalogo_de_Productos;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Dominio;
-using Negocio;
 
 namespace Presentacion
 {
@@ -184,6 +185,18 @@ namespace Presentacion
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnMarcas_Click(object sender, EventArgs e)
+        {
+            frmMarcas ventanaMarcas = new frmMarcas();
+            ventanaMarcas.ShowDialog();
+        }
+
+        private void btnAdministrarCategorias_Click(object sender, EventArgs e)
+        {
+            frmCategorias ventana = new frmCategorias();
+            ventana.ShowDialog();
         }
     }
 }

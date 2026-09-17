@@ -40,6 +40,8 @@
             this.lblFiltro = new System.Windows.Forms.Label();
             this.txtFiltroAvanzado = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnMarcas = new System.Windows.Forms.Button();
+            this.btnAdministrarCategorias = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.SuspendLayout();
@@ -153,11 +155,33 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // btnMarcas
+            // 
+            this.btnMarcas.Location = new System.Drawing.Point(1107, 344);
+            this.btnMarcas.Name = "btnMarcas";
+            this.btnMarcas.Size = new System.Drawing.Size(173, 30);
+            this.btnMarcas.TabIndex = 12;
+            this.btnMarcas.Text = "Administrar Marcas";
+            this.btnMarcas.UseVisualStyleBackColor = true;
+            this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
+            // 
+            // btnAdministrarCategorias
+            // 
+            this.btnAdministrarCategorias.Location = new System.Drawing.Point(1107, 380);
+            this.btnAdministrarCategorias.Name = "btnAdministrarCategorias";
+            this.btnAdministrarCategorias.Size = new System.Drawing.Size(173, 30);
+            this.btnAdministrarCategorias.TabIndex = 13;
+            this.btnAdministrarCategorias.Text = "Administrar Categorías";
+            this.btnAdministrarCategorias.UseVisualStyleBackColor = true;
+            this.btnAdministrarCategorias.Click += new System.EventHandler(this.btnAdministrarCategorias_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1631, 678);
+            this.Controls.Add(this.btnAdministrarCategorias);
+            this.Controls.Add(this.btnMarcas);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtFiltroAvanzado);
             this.Controls.Add(this.lblFiltro);
@@ -195,6 +219,8 @@
         private System.Windows.Forms.Label lblFiltro;
         private System.Windows.Forms.TextBox txtFiltroAvanzado;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnMarcas;
+        private System.Windows.Forms.Button btnAdministrarCategorias;
     }
 }
 

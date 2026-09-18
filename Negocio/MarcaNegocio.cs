@@ -82,6 +82,35 @@ namespace Negocio
             }
         }
 
+        //METODO PARA VERIFICAR SI LA MARCA TIENE ARTICULOS ASOCIADOS
+        public bool tieneArticulosAsociados(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT COUNT(*) AS Cantidad FROM ARTICULOS WHERE IdMarca = @Id");
+                datos.setearParametro("@Id", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    int cantidad = (int)datos.Lector["Cantidad"];
+                    return cantidad > 0;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         //METODO ELIMINAR MARCA
         public void eliminar(int id)
         {

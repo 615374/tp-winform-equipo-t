@@ -91,51 +91,37 @@ namespace Negocio
 
             if (campo == "Nombre")
             {
-                if (criterio == "Comienza con")
-                {
                     consulta += "A.Nombre LIKE @filtro";
-                }
-                else if (criterio == "Termina con")
-                {
-                    consulta += "A.Nombre LIKE @filtro";
-                }
-                else
-                {
-                    consulta += "A.Nombre LIKE @filtro";
-                }
             }
             else if (campo == "Codigo")
             {
-                if (criterio == "Comienza con")
-                {
                     consulta += "A.Codigo LIKE @filtro";
-                }
-                else if (criterio == "Termina con")
-                {
-                    consulta += "A.Codigo LIKE @filtro";
-                }
-                else
-                {
-                    consulta += "A.Codigo LIKE @filtro";
-                }
+            }
+            else if (campo == "Marca")
+            {
+                    consulta += "M.Descripcion LIKE @filtro";
+            }
+            else if (campo == "Categoria")
+            {
+                    consulta += "C.Descripcion LIKE @filtro";
             }
             else if (campo == "Precio")
             {
-                if (criterio == "Mayor a")
-                {
-                    consulta += "A.Precio > @filtro";
-                }
-                else if (criterio == "Menor a")
+                    if (criterio == "Mayor a")
+                    {
+                        consulta += "A.Precio > @filtro";
+                    }
+                    else if (criterio == "Menor a")
                     {
                         consulta += "A.Precio < @filtro";
                     }
-                else
-                {
-                    consulta += "A.Precio = @filtro";
-                }
+                    else
+                    {
+                        consulta += "A.Precio = @filtro";
+                    }
             }
-            if(campo == "Nombre" || campo == "Codigo")
-            {
+            if (campo == "Nombre" || campo == "Codigo" || campo == "Marca" || campo == "Categoria")
+                {
                 if (criterio == "Comienza con")
                 {
                     datos.setearParametro("@filtro", filtro + "%");

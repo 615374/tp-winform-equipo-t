@@ -79,12 +79,11 @@ namespace Negocio
             {
                 //Planteamos la consulta SQL con parámetros
                 string consulta = @"Insert into ARTICULOS 
-                                (Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values
-                                (@Id, @Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)";
+                                (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values
+                                (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)";
 
                 datos.setearConsulta(consulta);
                 //Indicamos dentro de la consulta establecida los valores del artículo que queremos agregar
-                datos.setearParametro("@Id", articulo.Id);
                 datos.setearParametro("@Codigo", articulo.Codigo);
                 datos.setearParametro("@Nombre", articulo.Nombre);
                 datos.setearParametro("@Descripcion", articulo.Descripcion);

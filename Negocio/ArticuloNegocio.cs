@@ -158,9 +158,5 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public void eliminarLogico(int idArticulo) //Ver como realizamos este, si le agregamos un campo de activo al Artículo o no
-        {
-
-        }
     }
 }

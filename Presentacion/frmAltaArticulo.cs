@@ -397,5 +397,46 @@ namespace Gestion_de_Catalogo_de_Productos
 
             txtImagenURL.Focus();
         }
+
+        private void btnEliminarImagen_Click(object sender, EventArgs e)
+        {
+            if (dgvImagenes.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una imagen para eliminar.");
+                return;
+            }
+
+            Imagen seleccionada = (Imagen)dgvImagenes.CurrentRow.DataBoundItem;
+
+            ImagenNegocio negocio = new ImagenNegocio();
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show(
+                    "¿Está seguro de que desea eliminar la imagen seleccionada?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    negocio.eliminar(seleccionada.Id);
+
+                    MessageBox.Show("Imagen eliminada correctamente.");
+
+                    Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                    cargarImagenes(articulo.Id);
+
+                    modificandoImagen = false;
+                    imagenSeleccionada = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

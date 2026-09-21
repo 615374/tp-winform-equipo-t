@@ -72,6 +72,91 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public void agregar(Articulo articulo) 
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                //Planteamos la consulta SQL con parámetros
+                string consulta = @"Insert into ARTICULOS 
+                                (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values
+                                (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)";
+
+                datos.setearConsulta(consulta);
+                //Indicamos dentro de la consulta establecida los valores del artículo que queremos agregar
+                datos.setearParametro("@Codigo", articulo.Codigo);
+                datos.setearParametro("@Nombre", articulo.Nombre);
+                datos.setearParametro("@Descripcion", articulo.Descripcion);
+                datos.setearParametro("@IdMarca", articulo.Marca.Id);
+                datos.setearParametro("@IdCategoria", articulo.Categoria.Id);
+                datos.setearParametro("@Precio", articulo.Precio);
+
+                datos.ejecutarLectura();
+            }
+            catch (Exception ex) 
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }            
+        }
+        public void modificar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                //Planteamos la consulta SQL con parámetros
+                string consulta = @"Update ARTICULOS set
+                                Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion,
+                                IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @Precio
+                                WHERE Id = @Id";
+
+                datos.setearConsulta(consulta);
+                //Indicamos dentro de la consulta establecida los nuevos valores del artículo que queremos modificar
+                datos.setearParametro("@Id", articulo.Id);
+                datos.setearParametro("@Codigo", articulo.Codigo);
+                datos.setearParametro("@Nombre", articulo.Nombre);
+                datos.setearParametro("@Descripcion", articulo.Descripcion);
+                datos.setearParametro("@IdMarca", articulo.Marca.Id);
+                datos.setearParametro("@IdCategoria", articulo.Categoria.Id);
+                datos.setearParametro("@Precio", articulo.Precio);
+
+                datos.ejecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void eliminar(int idArticulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                //Planteamos la consulta SQL con parámetros
+                string consulta = "Delete From ARTICULOS WHERE Id = @Id";
+
+                datos.setearConsulta(consulta);
+                //Indicamos dentro de la consulta establecida el Id del artículo que vamos a eliminar
+                datos.setearParametro("@Id", idArticulo);
+
+                datos.ejecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
         // METODO FILTRAR ARTICULOS
         public List<Articulo> filtrar(string campo, string criterio, string filtro)

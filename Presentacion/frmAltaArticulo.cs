@@ -20,7 +20,7 @@ namespace Gestion_de_Catalogo_de_Productos
         {
             InitializeComponent();
         }
-        private void frmArticulos_Load(object sender, EventArgs e)
+        private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
             cargar();
         }
@@ -207,6 +207,56 @@ namespace Gestion_de_Catalogo_de_Productos
                 MessageBox.Show(ex.Message);
             }
         }
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un artículo para eliminar.");
+                return;
+            }
 
+            Articulo seleccionado =
+                (Articulo)dgvArticulos.SelectedRows[0].DataBoundItem;
+
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show(
+                    "¿Está seguro de que desea eliminar el artículo " + seleccionado.Nombre + "?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    negocio.eliminar(seleccionado.Id);
+
+                    MessageBox.Show("Artículo eliminado correctamente.");
+
+                    cargar();
+
+                    txtCodigo.Clear();
+                    txtNombre.Clear();
+                    txtDescripcion.Clear();
+                    txtPrecio.Clear();
+
+                    txtCodigo.Enabled = false;
+                    txtNombre.Enabled = false;
+                    txtDescripcion.Enabled = false;
+                    txtPrecio.Enabled = false;
+                    cboMarca.Enabled = false;
+                    cboCategoria.Enabled = false;
+
+                    modificando = false;
+                    articuloSeleccionado = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

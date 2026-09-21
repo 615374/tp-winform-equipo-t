@@ -273,5 +273,15 @@ namespace Gestion_de_Catalogo_de_Productos
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null && dgvArticulos.CurrentRow.DataBoundItem is Articulo)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                cargarImagenes(seleccionado.Id);
+            }
+        }
     }
 }

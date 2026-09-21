@@ -198,5 +198,12 @@ namespace Presentacion
             frmCategorias ventana = new frmCategorias();
             ventana.ShowDialog();
         }
+
+        private void btnAdministrarArticulos_Click(object sender, EventArgs e)
+        {
+            frmAltaArticulo ventanaAltaArticulos = new frmAltaArticulo();
+            ventanaAltaArticulos.ShowDialog();
+            cargar();
+        }
     }
 }

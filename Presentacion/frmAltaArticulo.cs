@@ -72,6 +72,9 @@ namespace Gestion_de_Catalogo_de_Productos
             txtDescripcion.Clear();
             txtPrecio.Clear();
 
+            cboMarca.SelectedIndex = -1;
+            cboCategoria.SelectedIndex = -1;
+
             txtCodigo.Focus();
         }
         private void btnModificar_Click(object sender, EventArgs e)

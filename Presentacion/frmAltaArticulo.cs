@@ -125,6 +125,7 @@ namespace Gestion_de_Catalogo_de_Productos
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            //Validaciones previas
             if (txtCodigo.Text == "")
             {
                 MessageBox.Show("Ingrese un código.");
@@ -163,9 +164,17 @@ namespace Gestion_de_Catalogo_de_Productos
 
             decimal precio;
 
-            if (!decimal.TryParse(txtPrecio.Text, out precio))
+            if (!decimal.TryParse(txtPrecio.Text, out precio)) 
             {
-                MessageBox.Show("Ingrese un precio válido.");
+                {
+                    MessageBox.Show("Ingrese un precio válido.");
+                    return;
+                }
+            }
+
+            if (precio < 0)
+            {
+                MessageBox.Show("El precio debe ser mayor a 0.");
                 return;
             }
 
@@ -338,7 +347,7 @@ namespace Gestion_de_Catalogo_de_Productos
                 MessageBox.Show("Seleccione un artículo.");
                 return;
             }
-            // Lógica para guardar las imágenes en la Base de Datos según si es una modificación o una nueva imagen
+            //Lógica para guardar las imágenes en la Base de Datos según si es una modificación o una nueva imagen
             try
             {
                 ImagenNegocio negocio = new ImagenNegocio();

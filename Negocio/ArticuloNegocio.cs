@@ -91,7 +91,7 @@ namespace Negocio
                 datos.setearParametro("@IdCategoria", articulo.Categoria.Id);
                 datos.setearParametro("@Precio", articulo.Precio);
 
-                datos.ejecutarLectura();
+                datos.ejecutarAccion();
             }
             catch (Exception ex) 
             {
@@ -123,7 +123,7 @@ namespace Negocio
                 datos.setearParametro("@IdCategoria", articulo.Categoria.Id);
                 datos.setearParametro("@Precio", articulo.Precio);
 
-                datos.ejecutarLectura();
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
@@ -146,7 +146,7 @@ namespace Negocio
                 //Indicamos dentro de la consulta establecida el Id del artículo que vamos a eliminar
                 datos.setearParametro("@Id", idArticulo);
 
-                datos.ejecutarLectura();
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

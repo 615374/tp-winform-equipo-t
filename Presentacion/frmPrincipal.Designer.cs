@@ -192,6 +192,7 @@
             this.btnAdministrarArticulos.TabIndex = 14;
             this.btnAdministrarArticulos.Text = "Administrar Artículos";
             this.btnAdministrarArticulos.UseVisualStyleBackColor = true;
+            this.btnAdministrarArticulos.Click += new System.EventHandler(this.btnAdministrarArticulos_Click);
             // 
             // frmPrincipal
             // 

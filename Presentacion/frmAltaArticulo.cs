@@ -51,6 +51,21 @@ namespace Gestion_de_Catalogo_de_Productos
                 MessageBox.Show(ex.Message);
             }
         }
+        //Método auxiliar
+        private void cargarImagenes(int idArticulo)
+        {
+            ImagenNegocio negocio = new ImagenNegocio();
+
+            try
+            {
+                dgvImagenes.DataSource = null;
+                dgvImagenes.DataSource = negocio.listarPorIdArticulo(idArticulo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();

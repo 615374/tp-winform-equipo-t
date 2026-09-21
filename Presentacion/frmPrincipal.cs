@@ -203,6 +203,7 @@ namespace Presentacion
         {
             frmAltaArticulo ventanaAltaArticulos = new frmAltaArticulo();
             ventanaAltaArticulos.ShowDialog();
+            cargar();
         }
     }
 }

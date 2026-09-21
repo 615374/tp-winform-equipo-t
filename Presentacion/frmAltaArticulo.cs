@@ -106,15 +106,107 @@ namespace Gestion_de_Catalogo_de_Productos
 
             modificando = true;
         }
-
-        private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (txtCodigo.Text == "")
+            {
+                MessageBox.Show("Ingrese un código.");
+                return;
+            }
 
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("Ingrese un nombre.");
+                return;
+            }
+
+            if (txtDescripcion.Text == "")
+            {
+                MessageBox.Show("Ingrese una descripción.");
+                return;
+            }
+
+            if (txtPrecio.Text == "")
+            {
+                MessageBox.Show("Ingrese un precio.");
+                return;
+            }
+
+            if (cboMarca.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione una marca.");
+                return;
+            }
+
+            if (cboCategoria.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione una categoría.");
+                return;
+            }
+
+            decimal precio;
+
+            if (!decimal.TryParse(txtPrecio.Text, out precio))
+            {
+                MessageBox.Show("Ingrese un precio válido.");
+                return;
+            }
+
+            try
+            {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+
+                if (modificando)
+                {
+                    articuloSeleccionado.Codigo = txtCodigo.Text;
+                    articuloSeleccionado.Nombre = txtNombre.Text;
+                    articuloSeleccionado.Descripcion = txtDescripcion.Text;
+                    articuloSeleccionado.Precio = precio;
+                    articuloSeleccionado.Marca = (Marca)cboMarca.SelectedItem;
+                    articuloSeleccionado.Categoria = (Categoria)cboCategoria.SelectedItem;
+
+                    negocio.modificar(articuloSeleccionado);
+
+                    MessageBox.Show("Artículo modificado correctamente.");
+                }
+                else
+                {
+                    Articulo nuevo = new Articulo();
+
+                    nuevo.Codigo = txtCodigo.Text;
+                    nuevo.Nombre = txtNombre.Text;
+                    nuevo.Descripcion = txtDescripcion.Text;
+                    nuevo.Precio = precio;
+                    nuevo.Marca = (Marca)cboMarca.SelectedItem;
+                    nuevo.Categoria = (Categoria)cboCategoria.SelectedItem;
+
+                    negocio.agregar(nuevo);
+
+                    MessageBox.Show("Artículo agregado correctamente.");
+                }
+
+                cargar();
+
+                txtCodigo.Clear();
+                txtNombre.Clear();
+                txtDescripcion.Clear();
+                txtPrecio.Clear();
+
+                txtCodigo.Enabled = false;
+                txtNombre.Enabled = false;
+                txtDescripcion.Enabled = false;
+                txtPrecio.Enabled = false;
+                cboMarca.Enabled = false;
+                cboCategoria.Enabled = false;
+
+                modificando = false;
+                articuloSeleccionado = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void cboCategoria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

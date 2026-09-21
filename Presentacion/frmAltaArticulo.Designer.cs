@@ -312,13 +312,14 @@
             // 
             // btnGuardarImagen
             // 
-            this.btnGuardarImagen.Location = new System.Drawing.Point(650, 606);
+            this.btnGuardarImagen.Location = new System.Drawing.Point(660, 606);
             this.btnGuardarImagen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnGuardarImagen.Name = "btnGuardarImagen";
             this.btnGuardarImagen.Size = new System.Drawing.Size(173, 35);
             this.btnGuardarImagen.TabIndex = 23;
             this.btnGuardarImagen.Text = "Guardar Imagen";
             this.btnGuardarImagen.UseVisualStyleBackColor = true;
+            this.btnGuardarImagen.Click += new System.EventHandler(this.btnGuardarImagen_Click);
             // 
             // frmAltaArticulo
             // 

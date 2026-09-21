@@ -323,5 +323,60 @@ namespace Gestion_de_Catalogo_de_Productos
 
             txtImagenURL.Focus();
         }
+
+        private void btnGuardarImagen_Click(object sender, EventArgs e)
+        {
+            //Validaciones previas
+            if (txtImagenURL.Text == "")
+            {
+                MessageBox.Show("Ingrese una URL para la imagen.");
+                return;
+            }
+
+            if (dgvArticulos.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un artículo.");
+                return;
+            }
+            // Lógica para guardar las imágenes en la Base de Datos según si es una modificación o una nueva imagen
+            try
+            {
+                ImagenNegocio negocio = new ImagenNegocio();
+
+                if (modificandoImagen)
+                {
+                    imagenSeleccionada.ImagenUrl = txtImagenURL.Text;
+
+                    negocio.modificar(imagenSeleccionada);
+
+                    MessageBox.Show("Imagen modificada correctamente.");
+                }
+                else
+                {
+                    Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                    Imagen nueva = new Imagen();
+                    nueva.IdArticulo = articulo.Id;
+                    nueva.ImagenUrl = txtImagenURL.Text;
+
+                    negocio.agregar(nueva);
+
+                    MessageBox.Show("Imagen agregada correctamente.");
+                }
+
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                cargarImagenes(seleccionado.Id);
+
+                txtImagenURL.Enabled = false;
+
+                modificandoImagen = false;
+                imagenSeleccionada = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

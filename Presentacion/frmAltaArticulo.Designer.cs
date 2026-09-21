@@ -290,6 +290,7 @@
             this.btnModificarImagen.TabIndex = 18;
             this.btnModificarImagen.Text = "Modificar Imagen";
             this.btnModificarImagen.UseVisualStyleBackColor = true;
+            this.btnModificarImagen.Click += new System.EventHandler(this.btnModificarImagen_Click);
             // 
             // txtImagenURL
             // 

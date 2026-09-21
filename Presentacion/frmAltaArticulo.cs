@@ -378,5 +378,24 @@ namespace Gestion_de_Catalogo_de_Productos
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnModificarImagen_Click(object sender, EventArgs e)
+        {
+            //Validaciones previas
+            if (dgvImagenes.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una imagen para modificar.");
+                return;
+            }
+            //Lógica para traer la URL de la imagen del artículo seleccionado
+            imagenSeleccionada = (Imagen)dgvImagenes.CurrentRow.DataBoundItem;
+
+            txtImagenURL.Enabled = true;
+            txtImagenURL.Text = imagenSeleccionada.ImagenUrl;
+
+            modificandoImagen = true;
+
+            txtImagenURL.Focus();
+        }
     }
 }

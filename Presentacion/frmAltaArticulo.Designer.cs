@@ -94,7 +94,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Enabled = false;
-            this.txtDescripcion.Location = new System.Drawing.Point(291, 386);
+            this.txtDescripcion.Location = new System.Drawing.Point(291, 418);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(221, 26);
@@ -103,7 +103,7 @@
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(192, 386);
+            this.lblDescripcion.Location = new System.Drawing.Point(192, 418);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(96, 20);
             this.lblDescripcion.TabIndex = 7;
@@ -111,10 +111,10 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(489, 584);
+            this.btnGuardar.Location = new System.Drawing.Point(304, 606);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(101, 29);
+            this.btnGuardar.Size = new System.Drawing.Size(101, 35);
             this.btnGuardar.TabIndex = 9;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -167,7 +167,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(192, 352);
+            this.lblNombre.Location = new System.Drawing.Point(192, 368);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(69, 20);
             this.lblNombre.TabIndex = 7;
@@ -176,7 +176,7 @@
             // txtNombre
             // 
             this.txtNombre.Enabled = false;
-            this.txtNombre.Location = new System.Drawing.Point(291, 352);
+            this.txtNombre.Location = new System.Drawing.Point(291, 368);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(221, 26);
@@ -185,7 +185,7 @@
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(192, 420);
+            this.lblPrecio.Location = new System.Drawing.Point(192, 461);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(57, 20);
             this.lblPrecio.TabIndex = 7;
@@ -194,7 +194,7 @@
             // txtPrecio
             // 
             this.txtPrecio.Enabled = false;
-            this.txtPrecio.Location = new System.Drawing.Point(291, 420);
+            this.txtPrecio.Location = new System.Drawing.Point(291, 461);
             this.txtPrecio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(221, 26);
@@ -203,7 +203,7 @@
             // cboMarca
             // 
             this.cboMarca.FormattingEnabled = true;
-            this.cboMarca.Location = new System.Drawing.Point(291, 453);
+            this.cboMarca.Location = new System.Drawing.Point(291, 506);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(221, 28);
             this.cboMarca.TabIndex = 12;
@@ -211,7 +211,7 @@
             // cboCategoria
             // 
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(291, 487);
+            this.cboCategoria.Location = new System.Drawing.Point(291, 554);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(221, 28);
             this.cboCategoria.TabIndex = 13;
@@ -219,7 +219,7 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(192, 456);
+            this.lblMarca.Location = new System.Drawing.Point(192, 509);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(57, 20);
             this.lblMarca.TabIndex = 14;
@@ -228,7 +228,7 @@
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(192, 490);
+            this.lblCategoria.Location = new System.Drawing.Point(192, 557);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(82, 20);
             this.lblCategoria.TabIndex = 15;
@@ -254,7 +254,7 @@
             this.pbxImagenes.Location = new System.Drawing.Point(568, 353);
             this.pbxImagenes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbxImagenes.Name = "pbxImagenes";
-            this.pbxImagenes.Size = new System.Drawing.Size(367, 197);
+            this.pbxImagenes.Size = new System.Drawing.Size(367, 229);
             this.pbxImagenes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxImagenes.TabIndex = 17;
             this.pbxImagenes.TabStop = false;
@@ -292,6 +292,7 @@
             // txtImagenURL
             // 
             this.txtImagenURL.Enabled = false;
+            this.txtImagenURL.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtImagenURL.Location = new System.Drawing.Point(616, 318);
             this.txtImagenURL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtImagenURL.Name = "txtImagenURL";
@@ -301,7 +302,7 @@
             // lblImagenURL
             // 
             this.lblImagenURL.AutoSize = true;
-            this.lblImagenURL.Location = new System.Drawing.Point(564, 319);
+            this.lblImagenURL.Location = new System.Drawing.Point(564, 321);
             this.lblImagenURL.Name = "lblImagenURL";
             this.lblImagenURL.Size = new System.Drawing.Size(46, 20);
             this.lblImagenURL.TabIndex = 21;

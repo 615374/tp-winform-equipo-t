@@ -53,6 +53,7 @@
             this.btnModificarImagen = new System.Windows.Forms.Button();
             this.txtImagenURL = new System.Windows.Forms.TextBox();
             this.lblImagenURL = new System.Windows.Forms.Label();
+            this.btnGuardarImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvImagenes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenes)).BeginInit();
@@ -308,11 +309,22 @@
             this.lblImagenURL.TabIndex = 21;
             this.lblImagenURL.Text = "URL:";
             // 
+            // btnGuardarImagen
+            // 
+            this.btnGuardarImagen.Location = new System.Drawing.Point(650, 606);
+            this.btnGuardarImagen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnGuardarImagen.Name = "btnGuardarImagen";
+            this.btnGuardarImagen.Size = new System.Drawing.Size(173, 35);
+            this.btnGuardarImagen.TabIndex = 23;
+            this.btnGuardarImagen.Text = "Guardar Imagen";
+            this.btnGuardarImagen.UseVisualStyleBackColor = true;
+            // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1068, 666);
+            this.Controls.Add(this.btnGuardarImagen);
             this.Controls.Add(this.txtImagenURL);
             this.Controls.Add(this.lblImagenURL);
             this.Controls.Add(this.btnAgregarImagen);
@@ -376,5 +388,6 @@
         private System.Windows.Forms.Button btnModificarImagen;
         private System.Windows.Forms.TextBox txtImagenURL;
         private System.Windows.Forms.Label lblImagenURL;
+        private System.Windows.Forms.Button btnGuardarImagen;
     }
 }

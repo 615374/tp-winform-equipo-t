@@ -100,7 +100,9 @@ namespace Gestion_de_Catalogo_de_Productos
             txtDescripcion.Text = articuloSeleccionado.Descripcion;
             txtPrecio.Text = articuloSeleccionado.Precio.ToString();
 
-            // Después hacemos Marca y Categoría.
+            //Cargamos en el Combo Box la marca y categoría del articulo a modificar
+            cboMarca.SelectedValue = articuloSeleccionado.Marca.Id;
+            cboCategoria.SelectedValue = articuloSeleccionado.Categoria.Id;
 
             modificando = true;
         }

@@ -28,10 +28,23 @@ namespace Gestion_de_Catalogo_de_Productos
         private void cargar()
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
 
             try
             {
                 dgvArticulos.DataSource = negocio.listar();
+
+                cboMarca.DataSource = marcaNegocio.listar();
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
+
+                cboCategoria.DataSource = categoriaNegocio.listar();
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
+
+                cboMarca.SelectedIndex = -1;
+                cboCategoria.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -42,9 +55,51 @@ namespace Gestion_de_Catalogo_de_Productos
         {
             this.Close();
         }
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            modificando = false;
+            articuloSeleccionado = null;
+
+            txtCodigo.Enabled = true;
+            txtNombre.Enabled = true;
+            txtDescripcion.Enabled = true;
+            txtPrecio.Enabled = true;
+            cboMarca.Enabled = true;
+            cboCategoria.Enabled = true;
+
+            txtCodigo.Clear();
+            txtNombre.Clear();
+            txtDescripcion.Clear();
+            txtPrecio.Clear();
+
+            txtCodigo.Focus();
+        }
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            if (dgvArticulos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un artículo para modificar.");
+                return;
+            }
 
+            articuloSeleccionado =
+                (Articulo)dgvArticulos.SelectedRows[0].DataBoundItem;
+
+            txtCodigo.Enabled = true;
+            txtNombre.Enabled = true;
+            txtDescripcion.Enabled = true;
+            txtPrecio.Enabled = true;
+            cboMarca.Enabled = true;
+            cboCategoria.Enabled = true;
+
+            txtCodigo.Text = articuloSeleccionado.Codigo;
+            txtNombre.Text = articuloSeleccionado.Nombre;
+            txtDescripcion.Text = articuloSeleccionado.Descripcion;
+            txtPrecio.Text = articuloSeleccionado.Precio.ToString();
+
+            // Después hacemos Marca y Categoría.
+
+            modificando = true;
         }
 
         private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -53,11 +108,6 @@ namespace Gestion_de_Catalogo_de_Productos
         }
 
         private void cboCategoria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
         {
 
         }

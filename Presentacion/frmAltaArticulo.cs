@@ -174,7 +174,7 @@ namespace Gestion_de_Catalogo_de_Productos
 
             if (precio < 0)
             {
-                MessageBox.Show("El precio debe ser mayor a 0.");
+                MessageBox.Show("El precio debe ser mayor o igual a 0.");
                 return;
             }
 

@@ -51,8 +51,8 @@
             this.btnAgregarImagen = new System.Windows.Forms.Button();
             this.btnEliminarImagen = new System.Windows.Forms.Button();
             this.btnModificarImagen = new System.Windows.Forms.Button();
-            this.txtURL = new System.Windows.Forms.TextBox();
-            this.lblURL = new System.Windows.Forms.Label();
+            this.txtImagenURL = new System.Windows.Forms.TextBox();
+            this.lblImagenURL = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvImagenes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenes)).BeginInit();
@@ -247,6 +247,7 @@
             this.dgvImagenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvImagenes.Size = new System.Drawing.Size(367, 188);
             this.dgvImagenes.TabIndex = 16;
+            this.dgvImagenes.SelectionChanged += new System.EventHandler(this.dgvImagenes_SelectionChanged);
             // 
             // pbxImagenes
             // 
@@ -288,31 +289,31 @@
             this.btnModificarImagen.Text = "Modificar Imagen";
             this.btnModificarImagen.UseVisualStyleBackColor = true;
             // 
-            // txtURL
+            // txtImagenURL
             // 
-            this.txtURL.Enabled = false;
-            this.txtURL.Location = new System.Drawing.Point(616, 318);
-            this.txtURL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(319, 26);
-            this.txtURL.TabIndex = 22;
+            this.txtImagenURL.Enabled = false;
+            this.txtImagenURL.Location = new System.Drawing.Point(616, 318);
+            this.txtImagenURL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtImagenURL.Name = "txtImagenURL";
+            this.txtImagenURL.Size = new System.Drawing.Size(319, 26);
+            this.txtImagenURL.TabIndex = 22;
             // 
-            // lblURL
+            // lblImagenURL
             // 
-            this.lblURL.AutoSize = true;
-            this.lblURL.Location = new System.Drawing.Point(564, 319);
-            this.lblURL.Name = "lblURL";
-            this.lblURL.Size = new System.Drawing.Size(46, 20);
-            this.lblURL.TabIndex = 21;
-            this.lblURL.Text = "URL:";
+            this.lblImagenURL.AutoSize = true;
+            this.lblImagenURL.Location = new System.Drawing.Point(564, 319);
+            this.lblImagenURL.Name = "lblImagenURL";
+            this.lblImagenURL.Size = new System.Drawing.Size(46, 20);
+            this.lblImagenURL.TabIndex = 21;
+            this.lblImagenURL.Text = "URL:";
             // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1068, 666);
-            this.Controls.Add(this.txtURL);
-            this.Controls.Add(this.lblURL);
+            this.Controls.Add(this.txtImagenURL);
+            this.Controls.Add(this.lblImagenURL);
             this.Controls.Add(this.btnAgregarImagen);
             this.Controls.Add(this.btnEliminarImagen);
             this.Controls.Add(this.btnModificarImagen);
@@ -372,7 +373,7 @@
         private System.Windows.Forms.Button btnAgregarImagen;
         private System.Windows.Forms.Button btnEliminarImagen;
         private System.Windows.Forms.Button btnModificarImagen;
-        private System.Windows.Forms.TextBox txtURL;
-        private System.Windows.Forms.Label lblURL;
+        private System.Windows.Forms.TextBox txtImagenURL;
+        private System.Windows.Forms.Label lblImagenURL;
     }
 }

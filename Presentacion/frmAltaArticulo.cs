@@ -283,5 +283,25 @@ namespace Gestion_de_Catalogo_de_Productos
                 cargarImagenes(seleccionado.Id);
             }
         }
+
+        private void dgvImagenes_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvImagenes.CurrentRow != null && dgvImagenes.CurrentRow.DataBoundItem is Imagen)
+            {
+                Imagen seleccionada =
+                    (Imagen)dgvImagenes.CurrentRow.DataBoundItem;
+
+                txtImagenURL.Text = seleccionada.ImagenUrl;
+
+                try
+                {
+                    pbxImagenes.Load(seleccionada.ImagenUrl);
+                }
+                catch
+                {
+                    pbxImagenes.Image = null;
+                }
+            }
+        }
     }
 }

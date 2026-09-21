@@ -16,6 +16,8 @@ namespace Gestion_de_Catalogo_de_Productos
     {
         private Articulo articuloSeleccionado = null;
         private bool modificando = false;
+        private Imagen imagenSeleccionada = null;
+        private bool modificandoImagen = false;
         public frmAltaArticulo()
         {
             InitializeComponent();
@@ -302,6 +304,24 @@ namespace Gestion_de_Catalogo_de_Productos
                     pbxImagenes.Image = null;
                 }
             }
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un artículo.");
+                return;
+            }
+
+            imagenSeleccionada = null;
+            modificandoImagen = false;
+
+            txtImagenURL.Enabled = true;
+            txtImagenURL.Clear();
+            pbxImagenes.Image = null;
+
+            txtImagenURL.Focus();
         }
     }
 }

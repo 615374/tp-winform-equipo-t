@@ -46,12 +46,22 @@
             this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblCategoria = new System.Windows.Forms.Label();
+            this.dgvImagenes = new System.Windows.Forms.DataGridView();
+            this.pbxImagenes = new System.Windows.Forms.PictureBox();
+            this.btnAgregarImagen = new System.Windows.Forms.Button();
+            this.btnEliminarImagen = new System.Windows.Forms.Button();
+            this.btnModificarImagen = new System.Windows.Forms.Button();
+            this.txtImagenURL = new System.Windows.Forms.TextBox();
+            this.lblImagenURL = new System.Windows.Forms.Label();
+            this.btnGuardarImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvImagenes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxImagenes)).BeginInit();
             this.SuspendLayout();
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(342, 263);
+            this.btnModificar.Location = new System.Drawing.Point(304, 264);
             this.btnModificar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(101, 32);
@@ -62,7 +72,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(449, 263);
+            this.btnEliminar.Location = new System.Drawing.Point(411, 264);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(101, 32);
@@ -73,7 +83,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(235, 263);
+            this.btnAgregar.Location = new System.Drawing.Point(197, 264);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(101, 32);
@@ -85,7 +95,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Enabled = false;
-            this.txtDescripcion.Location = new System.Drawing.Point(329, 381);
+            this.txtDescripcion.Location = new System.Drawing.Point(291, 418);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(221, 26);
@@ -94,7 +104,7 @@
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(230, 381);
+            this.lblDescripcion.Location = new System.Drawing.Point(192, 418);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(96, 20);
             this.lblDescripcion.TabIndex = 7;
@@ -102,10 +112,10 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(342, 536);
+            this.btnGuardar.Location = new System.Drawing.Point(304, 606);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(101, 29);
+            this.btnGuardar.Size = new System.Drawing.Size(101, 35);
             this.btnGuardar.TabIndex = 9;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -114,7 +124,7 @@
             // dgvArticulos
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.Location = new System.Drawing.Point(205, 50);
+            this.dgvArticulos.Location = new System.Drawing.Point(166, 51);
             this.dgvArticulos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
@@ -124,10 +134,11 @@
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(367, 188);
             this.dgvArticulos.TabIndex = 10;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(488, 13);
+            this.btnCerrar.Location = new System.Drawing.Point(851, 14);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(84, 29);
@@ -139,7 +150,7 @@
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(231, 313);
+            this.lblCodigo.Location = new System.Drawing.Point(193, 318);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(63, 20);
             this.lblCodigo.TabIndex = 7;
@@ -148,7 +159,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(329, 313);
+            this.txtCodigo.Location = new System.Drawing.Point(291, 318);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(221, 26);
@@ -157,7 +168,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(230, 347);
+            this.lblNombre.Location = new System.Drawing.Point(192, 368);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(69, 20);
             this.lblNombre.TabIndex = 7;
@@ -166,7 +177,7 @@
             // txtNombre
             // 
             this.txtNombre.Enabled = false;
-            this.txtNombre.Location = new System.Drawing.Point(329, 347);
+            this.txtNombre.Location = new System.Drawing.Point(291, 368);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(221, 26);
@@ -175,7 +186,7 @@
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(230, 415);
+            this.lblPrecio.Location = new System.Drawing.Point(192, 461);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(57, 20);
             this.lblPrecio.TabIndex = 7;
@@ -184,7 +195,7 @@
             // txtPrecio
             // 
             this.txtPrecio.Enabled = false;
-            this.txtPrecio.Location = new System.Drawing.Point(329, 415);
+            this.txtPrecio.Location = new System.Drawing.Point(291, 461);
             this.txtPrecio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(221, 26);
@@ -193,7 +204,7 @@
             // cboMarca
             // 
             this.cboMarca.FormattingEnabled = true;
-            this.cboMarca.Location = new System.Drawing.Point(329, 448);
+            this.cboMarca.Location = new System.Drawing.Point(291, 506);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(221, 28);
             this.cboMarca.TabIndex = 12;
@@ -201,7 +212,7 @@
             // cboCategoria
             // 
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(329, 482);
+            this.cboCategoria.Location = new System.Drawing.Point(291, 554);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(221, 28);
             this.cboCategoria.TabIndex = 13;
@@ -209,7 +220,7 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(230, 451);
+            this.lblMarca.Location = new System.Drawing.Point(192, 509);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(57, 20);
             this.lblMarca.TabIndex = 14;
@@ -218,17 +229,113 @@
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(230, 485);
+            this.lblCategoria.Location = new System.Drawing.Point(192, 557);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(82, 20);
             this.lblCategoria.TabIndex = 15;
             this.lblCategoria.Text = "Categoria:";
             // 
+            // dgvImagenes
+            // 
+            this.dgvImagenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvImagenes.Location = new System.Drawing.Point(568, 51);
+            this.dgvImagenes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvImagenes.MultiSelect = false;
+            this.dgvImagenes.Name = "dgvImagenes";
+            this.dgvImagenes.ReadOnly = true;
+            this.dgvImagenes.RowHeadersWidth = 51;
+            this.dgvImagenes.RowTemplate.Height = 24;
+            this.dgvImagenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvImagenes.Size = new System.Drawing.Size(367, 188);
+            this.dgvImagenes.TabIndex = 16;
+            this.dgvImagenes.SelectionChanged += new System.EventHandler(this.dgvImagenes_SelectionChanged);
+            // 
+            // pbxImagenes
+            // 
+            this.pbxImagenes.Location = new System.Drawing.Point(568, 353);
+            this.pbxImagenes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbxImagenes.Name = "pbxImagenes";
+            this.pbxImagenes.Size = new System.Drawing.Size(367, 229);
+            this.pbxImagenes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxImagenes.TabIndex = 17;
+            this.pbxImagenes.TabStop = false;
+            // 
+            // btnAgregarImagen
+            // 
+            this.btnAgregarImagen.Location = new System.Drawing.Point(591, 252);
+            this.btnAgregarImagen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAgregarImagen.Name = "btnAgregarImagen";
+            this.btnAgregarImagen.Size = new System.Drawing.Size(101, 56);
+            this.btnAgregarImagen.TabIndex = 20;
+            this.btnAgregarImagen.Text = "Agregar Imagen";
+            this.btnAgregarImagen.UseVisualStyleBackColor = true;
+            this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
+            // 
+            // btnEliminarImagen
+            // 
+            this.btnEliminarImagen.Location = new System.Drawing.Point(805, 252);
+            this.btnEliminarImagen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnEliminarImagen.Name = "btnEliminarImagen";
+            this.btnEliminarImagen.Size = new System.Drawing.Size(101, 56);
+            this.btnEliminarImagen.TabIndex = 19;
+            this.btnEliminarImagen.Text = "Eliminar Imagen";
+            this.btnEliminarImagen.UseVisualStyleBackColor = true;
+            this.btnEliminarImagen.Click += new System.EventHandler(this.btnEliminarImagen_Click);
+            // 
+            // btnModificarImagen
+            // 
+            this.btnModificarImagen.Location = new System.Drawing.Point(698, 252);
+            this.btnModificarImagen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnModificarImagen.Name = "btnModificarImagen";
+            this.btnModificarImagen.Size = new System.Drawing.Size(101, 56);
+            this.btnModificarImagen.TabIndex = 18;
+            this.btnModificarImagen.Text = "Modificar Imagen";
+            this.btnModificarImagen.UseVisualStyleBackColor = true;
+            this.btnModificarImagen.Click += new System.EventHandler(this.btnModificarImagen_Click);
+            // 
+            // txtImagenURL
+            // 
+            this.txtImagenURL.Enabled = false;
+            this.txtImagenURL.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtImagenURL.Location = new System.Drawing.Point(616, 318);
+            this.txtImagenURL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtImagenURL.Name = "txtImagenURL";
+            this.txtImagenURL.Size = new System.Drawing.Size(319, 26);
+            this.txtImagenURL.TabIndex = 22;
+            // 
+            // lblImagenURL
+            // 
+            this.lblImagenURL.AutoSize = true;
+            this.lblImagenURL.Location = new System.Drawing.Point(564, 321);
+            this.lblImagenURL.Name = "lblImagenURL";
+            this.lblImagenURL.Size = new System.Drawing.Size(46, 20);
+            this.lblImagenURL.TabIndex = 21;
+            this.lblImagenURL.Text = "URL:";
+            // 
+            // btnGuardarImagen
+            // 
+            this.btnGuardarImagen.Location = new System.Drawing.Point(660, 606);
+            this.btnGuardarImagen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnGuardarImagen.Name = "btnGuardarImagen";
+            this.btnGuardarImagen.Size = new System.Drawing.Size(173, 35);
+            this.btnGuardarImagen.TabIndex = 23;
+            this.btnGuardarImagen.Text = "Guardar Imagen";
+            this.btnGuardarImagen.UseVisualStyleBackColor = true;
+            this.btnGuardarImagen.Click += new System.EventHandler(this.btnGuardarImagen_Click);
+            // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 598);
+            this.ClientSize = new System.Drawing.Size(1068, 666);
+            this.Controls.Add(this.btnGuardarImagen);
+            this.Controls.Add(this.txtImagenURL);
+            this.Controls.Add(this.lblImagenURL);
+            this.Controls.Add(this.btnAgregarImagen);
+            this.Controls.Add(this.btnEliminarImagen);
+            this.Controls.Add(this.btnModificarImagen);
+            this.Controls.Add(this.pbxImagenes);
+            this.Controls.Add(this.dgvImagenes);
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.cboCategoria);
@@ -251,6 +358,8 @@
             this.Text = "frmAltaArticulo";
             this.Load += new System.EventHandler(this.frmAltaArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvImagenes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxImagenes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,5 +385,13 @@
         private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label lblCategoria;
+        private System.Windows.Forms.DataGridView dgvImagenes;
+        private System.Windows.Forms.PictureBox pbxImagenes;
+        private System.Windows.Forms.Button btnAgregarImagen;
+        private System.Windows.Forms.Button btnEliminarImagen;
+        private System.Windows.Forms.Button btnModificarImagen;
+        private System.Windows.Forms.TextBox txtImagenURL;
+        private System.Windows.Forms.Label lblImagenURL;
+        private System.Windows.Forms.Button btnGuardarImagen;
     }
 }

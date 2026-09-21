@@ -16,6 +16,8 @@ namespace Gestion_de_Catalogo_de_Productos
     {
         private Articulo articuloSeleccionado = null;
         private bool modificando = false;
+        private Imagen imagenSeleccionada = null;
+        private bool modificandoImagen = false;
         public frmAltaArticulo()
         {
             InitializeComponent();
@@ -45,6 +47,21 @@ namespace Gestion_de_Catalogo_de_Productos
 
                 cboMarca.SelectedIndex = -1;
                 cboCategoria.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        //Método auxiliar
+        private void cargarImagenes(int idArticulo)
+        {
+            ImagenNegocio negocio = new ImagenNegocio();
+
+            try
+            {
+                dgvImagenes.DataSource = null;
+                dgvImagenes.DataSource = negocio.listarPorIdArticulo(idArticulo);
             }
             catch (Exception ex)
             {
@@ -108,6 +125,7 @@ namespace Gestion_de_Catalogo_de_Productos
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            //Validaciones previas
             if (txtCodigo.Text == "")
             {
                 MessageBox.Show("Ingrese un código.");
@@ -146,9 +164,17 @@ namespace Gestion_de_Catalogo_de_Productos
 
             decimal precio;
 
-            if (!decimal.TryParse(txtPrecio.Text, out precio))
+            if (!decimal.TryParse(txtPrecio.Text, out precio)) 
             {
-                MessageBox.Show("Ingrese un precio válido.");
+                {
+                    MessageBox.Show("Ingrese un precio válido.");
+                    return;
+                }
+            }
+
+            if (precio < 0)
+            {
+                MessageBox.Show("El precio debe ser mayor o igual a 0.");
                 return;
             }
 
@@ -251,6 +277,169 @@ namespace Gestion_de_Catalogo_de_Productos
 
                     modificando = false;
                     articuloSeleccionado = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null && dgvArticulos.CurrentRow.DataBoundItem is Articulo)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                cargarImagenes(seleccionado.Id);
+            }
+        }
+
+        private void dgvImagenes_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvImagenes.CurrentRow != null && dgvImagenes.CurrentRow.DataBoundItem is Imagen)
+            {
+                Imagen seleccionada =
+                    (Imagen)dgvImagenes.CurrentRow.DataBoundItem;
+
+                txtImagenURL.Text = seleccionada.ImagenUrl;
+
+                try
+                {
+                    pbxImagenes.Load(seleccionada.ImagenUrl);
+                }
+                catch
+                {
+                    pbxImagenes.Image = null;
+                }
+            }
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un artículo.");
+                return;
+            }
+
+            imagenSeleccionada = null;
+            modificandoImagen = false;
+
+            txtImagenURL.Enabled = true;
+            txtImagenURL.Clear();
+            pbxImagenes.Image = null;
+
+            txtImagenURL.Focus();
+        }
+
+        private void btnGuardarImagen_Click(object sender, EventArgs e)
+        {
+            //Validaciones previas
+            if (txtImagenURL.Text == "")
+            {
+                MessageBox.Show("Ingrese una URL para la imagen.");
+                return;
+            }
+
+            if (dgvArticulos.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un artículo.");
+                return;
+            }
+            //Lógica para guardar las imágenes en la Base de Datos según si es una modificación o una nueva imagen
+            try
+            {
+                ImagenNegocio negocio = new ImagenNegocio();
+
+                if (modificandoImagen)
+                {
+                    imagenSeleccionada.ImagenUrl = txtImagenURL.Text;
+
+                    negocio.modificar(imagenSeleccionada);
+
+                    MessageBox.Show("Imagen modificada correctamente.");
+                }
+                else
+                {
+                    Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                    Imagen nueva = new Imagen();
+                    nueva.IdArticulo = articulo.Id;
+                    nueva.ImagenUrl = txtImagenURL.Text;
+
+                    negocio.agregar(nueva);
+
+                    MessageBox.Show("Imagen agregada correctamente.");
+                }
+
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                cargarImagenes(seleccionado.Id);
+
+                txtImagenURL.Enabled = false;
+
+                modificandoImagen = false;
+                imagenSeleccionada = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnModificarImagen_Click(object sender, EventArgs e)
+        {
+            //Validaciones previas
+            if (dgvImagenes.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una imagen para modificar.");
+                return;
+            }
+            //Lógica para traer la URL de la imagen del artículo seleccionado
+            imagenSeleccionada = (Imagen)dgvImagenes.CurrentRow.DataBoundItem;
+
+            txtImagenURL.Enabled = true;
+            txtImagenURL.Text = imagenSeleccionada.ImagenUrl;
+
+            modificandoImagen = true;
+
+            txtImagenURL.Focus();
+        }
+
+        private void btnEliminarImagen_Click(object sender, EventArgs e)
+        {
+            if (dgvImagenes.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una imagen para eliminar.");
+                return;
+            }
+
+            Imagen seleccionada = (Imagen)dgvImagenes.CurrentRow.DataBoundItem;
+
+            ImagenNegocio negocio = new ImagenNegocio();
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show(
+                    "¿Está seguro de que desea eliminar la imagen seleccionada?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    negocio.eliminar(seleccionada.Id);
+
+                    MessageBox.Show("Imagen eliminada correctamente.");
+
+                    Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                    cargarImagenes(articulo.Id);
+
+                    modificandoImagen = false;
+                    imagenSeleccionada = null;
                 }
             }
             catch (Exception ex)
